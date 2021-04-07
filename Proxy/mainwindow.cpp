@@ -2,12 +2,16 @@
 #include "ui_mainwindow.h"
 #include "appareil.h"
 #include "dialog.h"
+#include "verif.h"
+#include <QMessageBox>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
 }
 
 MainWindow::~MainWindow()
@@ -20,12 +24,38 @@ MainWindow::~MainWindow()
 void MainWindow::on_Button_Ajouter_clicked()
 {
     Appareil a;
-    a.settype(ui->lineEdit_typeappareil->text());
+    /*a.settype(ui->lineEdit_typeappareil->text());
     a.setnom(ui->lineEdit_nomappareil->text());
     a.setnum(ui->lineEdit_numappareil->text());
     a.setproprio(ui->lineEdit_proprio->text());
     Dialog d;
     d.setappareil(a);
-    d.exec();
+    d.exec();*/
+    int id=ui->lineEdit_nomappareil->text().toInt();
+    QString type=ui->lineEdit_typeappareil->text() ;
+    int num=ui->lineEdit_numappareil->text().toInt();
+    QString owner=ui->lineEdit_proprio->text() ;
+    Appareil(id,owner,type,num);
+    bool test=a.ajouterappareil();
+    if (test) {
+        QMessageBox::information(nullptr, QObject::tr("OK"),QObject::tr("ajout effectué"),QMessageBox::Cancel);
+    } else
+    {
+        QMessageBox::critical(nullptr, QObject::tr("Not OK"),QObject::tr("ajout non effectué"),QMessageBox::Cancel);
+    }
 
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    verif v;
+
+    v.update();
+    v.exec();
+}
+
+void MainWindow::on_pushButton_9_clicked()
+{
+    Dialog d;
+    d.exec();
 }

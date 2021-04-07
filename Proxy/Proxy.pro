@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,18 +17,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Appareil.cpp \
+    connexion.cpp \
     dialog.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    sites.cpp \
+    verif.cpp
 
 HEADERS += \
     appareil.h \
+    connexion.h \
     dialog.h \
-    mainwindow.h
+    mainwindow.h \
+    sites.h \
+    verif.h
 
 FORMS += \
     dialog.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    verif.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

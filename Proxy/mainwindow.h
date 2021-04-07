@@ -19,7 +19,12 @@ private slots:
 
     void on_Button_Ajouter_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_pushButton_9_clicked();
+
 private:
     Ui::MainWindow *ui;
+
 };
 #endif // MAINWINDOW_H

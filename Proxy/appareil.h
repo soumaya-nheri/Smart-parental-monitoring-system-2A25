@@ -5,16 +5,31 @@
 class Appareil
 {
 public:
-    void setnom(QString n);
-    void settype(QString n);
-    void setnum(QString n);
-    void setproprio(QString n);
-    QString get_nom();
-    QString get_type();
-    QString get_num();
-    QString get_proprio();
+
     Appareil();
+    Appareil(int,QString,QString,int);
+
+    void setid(int id){this->id=id;};
+    void settype(QString n){type=n;};
+    void setnum(int num){this->num=num;};
+    void setowner(QString n){owner=n;};
+
+
+    int get_id(){return id;};
+    QString get_type(){return type;};
+    int get_num(){return num;};
+    QString get_owner(){return owner;};
+
+
+
+    bool ajouterappareil();
+
 private:
-    QString type,nom,proprio,num;
+    QString type,owner;
+    int id,num;
+
+
+
+
 };
 #endif // APPAREIL_H
