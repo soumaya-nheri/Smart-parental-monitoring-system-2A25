@@ -1,6 +1,8 @@
 #ifndef APPAREIL_H
 #define APPAREIL_H
 #include <QString>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
 
 class Appareil
 {
@@ -24,6 +26,7 @@ public:
 
     bool ajouterappareil();
     bool supprimerappareil(int id);
+    QSqlQueryModel * afficher();
 
 private:
     QString type,owner;

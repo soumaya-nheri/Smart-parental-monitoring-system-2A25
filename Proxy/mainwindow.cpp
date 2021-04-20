@@ -11,14 +11,19 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    ui->table->setModel(tmpapp.afficher());
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+
 }
 
+
+void MainWindow::updatetable(){
+    ui->table->setModel(tmpapp.afficher());
+}
 
 
 void MainWindow::on_Button_Ajouter_clicked()
@@ -33,6 +38,7 @@ void MainWindow::on_Button_Ajouter_clicked()
     a= Appareil(id,owner,type,num);
     bool test=a.ajouterappareil();
     if (test) {
+        ui->table->setModel(tmpapp.afficher());
         QMessageBox::information(nullptr, QObject::tr("OK"),QObject::tr("ajout effectué"),QMessageBox::Cancel);
     } else
     {
@@ -58,5 +64,6 @@ void MainWindow::on_pushButton_9_clicked()
 void MainWindow::on_suppression_clicked()
 {
     DeleteBox d;
+    ui->table->setModel(tmpapp.afficher());
     d.exec();
 }

@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include "appareil.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -14,6 +14,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+public slots:
+    void updatetable();
 
 private slots:
 
@@ -27,6 +30,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    Appareil tmpapp;
+
 
 };
 #endif // MAINWINDOW_H

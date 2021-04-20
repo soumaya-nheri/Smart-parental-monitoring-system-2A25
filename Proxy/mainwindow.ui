@@ -433,30 +433,11 @@ QTabBar::tab:!selected:hover
         <bool>true</bool>
        </property>
       </widget>
-     </widget>
-     <widget class="QGroupBox" name="groupBox_3">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>90</y>
-        <width>411</width>
-        <height>231</height>
-       </rect>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="title">
-       <string>Liste des Appareils</string>
-      </property>
-      <property name="flat">
-       <bool>false</bool>
-      </property>
       <widget class="QTableWidget" name="tableWidget">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>20</y>
+         <x>100</x>
+         <y>-50</y>
          <width>391</width>
          <height>151</height>
         </rect>
@@ -554,6 +535,25 @@ QTabBar::tab:!selected:hover
         </property>
        </item>
       </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>90</y>
+        <width>411</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="title">
+       <string>Liste des Appareils</string>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
       <widget class="QPushButton" name="suppression">
        <property name="geometry">
         <rect>
@@ -578,6 +578,16 @@ QTabBar::tab:!selected:hover
        </property>
        <property name="text">
         <string>Modifier</string>
+       </property>
+      </widget>
+      <widget class="QTableView" name="table">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>371</width>
+         <height>141</height>
+        </rect>
        </property>
       </widget>
      </widget>

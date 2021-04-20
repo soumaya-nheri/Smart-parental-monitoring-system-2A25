@@ -59,3 +59,17 @@ bool Appareil::supprimerappareil(int id)
     qry.bindValue(":id",id);
     return qry.exec();
 }
+
+QSqlQueryModel * Appareil::afficher()
+{
+QSqlQueryModel * model = new QSqlQueryModel();
+
+model->setQuery("select * from appareils");
+
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("Propriétaire"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("Type"));
+model->setHeaderData(3, Qt::Horizontal, QObject::tr("Numero"));
+
+    return model;
+}

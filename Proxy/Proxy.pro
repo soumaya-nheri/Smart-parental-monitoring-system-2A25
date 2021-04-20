@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Appareil.cpp \
+    arduino.cpp \
     connexion.cpp \
     deletebox.cpp \
     dialog.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 
 HEADERS += \
     appareil.h \
+    arduino.h \
     connexion.h \
     deletebox.h \
     dialog.h \
