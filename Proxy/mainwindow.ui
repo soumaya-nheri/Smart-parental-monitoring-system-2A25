@@ -554,7 +554,7 @@ QTabBar::tab:!selected:hover
         </property>
        </item>
       </widget>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="suppression">
        <property name="geometry">
         <rect>
          <x>240</x>

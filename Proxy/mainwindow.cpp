@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "appareil.h"
-#include "dialog.h"
+#include "deletebox.h"
 #include "verif.h"
 #include <QMessageBox>
 
@@ -51,6 +51,12 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_9_clicked()
 {
-    Dialog d;
+   /* Dialog d;
+    d.exec();*/
+}
+
+void MainWindow::on_suppression_clicked()
+{
+    DeleteBox d;
     d.exec();
 }

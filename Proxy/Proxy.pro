@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Appareil.cpp \
     connexion.cpp \
+    deletebox.cpp \
     dialog.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -27,12 +28,14 @@ SOURCES += \
 HEADERS += \
     appareil.h \
     connexion.h \
+    deletebox.h \
     dialog.h \
     mainwindow.h \
     sites.h \
     verif.h
 
 FORMS += \
+    deletebox.ui \
     dialog.ui \
     mainwindow.ui \
     verif.ui

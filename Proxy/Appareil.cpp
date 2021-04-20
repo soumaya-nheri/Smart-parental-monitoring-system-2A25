@@ -37,13 +37,8 @@ QString Appareil::get_owner(){return owner;}*/
 
 bool Appareil::ajouterappareil()
 {
-
-
-
 QSqlQuery query;
 QString res= QString::number(id);
-
-
 query.prepare("INSERT INTO appareils (ID, OWNER, TYPE,NUMERO) "
                     "VALUES (:id, :owner, :type, :num)");
 query.bindValue(":id", res);
@@ -53,4 +48,14 @@ query.bindValue(":num", num);
 
 return    query.exec();
 
+}
+
+bool Appareil::supprimerappareil(int id)
+{
+
+    QSqlQuery qry;
+
+    qry.prepare("Delete from appareils where id = :id");
+    qry.bindValue(":id",id);
+    return qry.exec();
 }

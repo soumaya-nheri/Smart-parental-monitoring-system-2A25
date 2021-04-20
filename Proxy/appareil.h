@@ -23,6 +23,7 @@ public:
 
 
     bool ajouterappareil();
+    bool supprimerappareil(int id);
 
 private:
     QString type,owner;

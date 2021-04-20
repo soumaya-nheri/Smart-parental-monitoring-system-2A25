@@ -23,6 +23,8 @@ private slots:
 
     void on_pushButton_9_clicked();
 
+    void on_suppression_clicked();
+
 private:
     Ui::MainWindow *ui;
 
