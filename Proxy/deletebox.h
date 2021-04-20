@@ -14,7 +14,7 @@ class DeleteBox : public QDialog
 public:
     explicit DeleteBox(QWidget *parent = nullptr);
     ~DeleteBox();
-    void Update(Ui::MainWindow *ui);
+    //void Update(Ui::MainWindow *ui);
 
 
 private slots:

@@ -20,9 +20,9 @@ SOURCES += \
     arduino.cpp \
     connexion.cpp \
     deletebox.cpp \
-    dialog.cpp \
     main.cpp \
     mainwindow.cpp \
+    modification.cpp \
     sites.cpp \
     verif.cpp
 
@@ -31,15 +31,15 @@ HEADERS += \
     arduino.h \
     connexion.h \
     deletebox.h \
-    dialog.h \
     mainwindow.h \
+    modification.h \
     sites.h \
     verif.h
 
 FORMS += \
     deletebox.ui \
-    dialog.ui \
     mainwindow.ui \
+    modification.ui \
     verif.ui
 
 # Default rules for deployment.

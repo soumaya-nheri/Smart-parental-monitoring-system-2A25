@@ -27,6 +27,7 @@ public:
     bool ajouterappareil();
     bool supprimerappareil(int id);
     QSqlQueryModel * afficher();
+    bool modifierApp(int id,QString owner,QString type,int num);
 
 private:
     QString type,owner;

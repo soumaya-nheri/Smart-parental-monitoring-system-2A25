@@ -1,5 +1,6 @@
 #include "arduino.h"
-
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
 Arduino::Arduino()
 {
 
@@ -33,7 +34,7 @@ int Arduino::write_to_arduino(QByteArray msg)
     else
         qDebug() << "Couldn't write to serial!";
 }
-
+/*
 int Arduino::connect_arduino()
 {
     foreach(const QSerialPortInfo &serial_port_info, QSerialPortInfo::availablePorts())
@@ -63,4 +64,4 @@ int Arduino::connect_arduino()
 
         return 1;
     }
-}
+}*/

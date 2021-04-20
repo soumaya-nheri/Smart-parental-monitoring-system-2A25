@@ -4,6 +4,7 @@
 #include "deletebox.h"
 #include "verif.h"
 #include <QMessageBox>
+#include "modification.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -64,6 +65,13 @@ void MainWindow::on_pushButton_9_clicked()
 void MainWindow::on_suppression_clicked()
 {
     DeleteBox d;
+    ui->table->setModel(tmpapp.afficher());
+    d.exec();
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    modification d;
     ui->table->setModel(tmpapp.afficher());
     d.exec();
 }
