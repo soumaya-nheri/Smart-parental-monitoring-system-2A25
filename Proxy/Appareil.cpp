@@ -23,9 +23,9 @@ Appareil::Appareil(int id, QString owner, QString type, int num)
 
 }
 
-/*
 
-void Appareil::setnum(int n) {num=n;}
+
+/*void Appareil::setnum(int n) {num=n;}
 void Appareil::settype(QString n) {type=n;}
 void Appareil::setid(int n) {id=n;}
 void Appareil::setowner(QString n) {owner=n;}
@@ -37,15 +37,14 @@ QString Appareil::get_owner(){return owner;}*/
 
 bool Appareil::ajouterappareil()
 {
-   /*
-Connexion c;
-c.ouvrirConnexion();*/
+
+
 
 QSqlQuery query;
 QString res= QString::number(id);
 
 
-query.prepare("INSERT INTO client (ID, OWNER, TYPE,NUMERO) "
+query.prepare("INSERT INTO appareils (ID, OWNER, TYPE,NUMERO) "
                     "VALUES (:id, :owner, :type, :num)");
 query.bindValue(":id", res);
 query.bindValue(":owner", owner);

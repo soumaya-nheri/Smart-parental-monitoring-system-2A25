@@ -24,18 +24,13 @@ MainWindow::~MainWindow()
 void MainWindow::on_Button_Ajouter_clicked()
 {
     Appareil a;
-    /*a.settype(ui->lineEdit_typeappareil->text());
-    a.setnom(ui->lineEdit_nomappareil->text());
-    a.setnum(ui->lineEdit_numappareil->text());
-    a.setproprio(ui->lineEdit_proprio->text());
-    Dialog d;
-    d.setappareil(a);
-    d.exec();*/
+
     int id=ui->lineEdit_nomappareil->text().toInt();
     QString type=ui->lineEdit_typeappareil->text() ;
     int num=ui->lineEdit_numappareil->text().toInt();
     QString owner=ui->lineEdit_proprio->text() ;
-    Appareil(id,owner,type,num);
+
+    a= Appareil(id,owner,type,num);
     bool test=a.ajouterappareil();
     if (test) {
         QMessageBox::information(nullptr, QObject::tr("OK"),QObject::tr("ajout effectué"),QMessageBox::Cancel);
