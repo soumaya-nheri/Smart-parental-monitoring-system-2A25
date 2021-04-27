@@ -1,6 +1,6 @@
 QT       += core gui network
 QT       += sql
-
+QT       += serialport
 CONFIG   += console
 
 
@@ -13,13 +13,11 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    arduino.cpp \
     connection.cpp \
-    emailaddress.cpp \
     main.cpp \
     mainwindow.cpp \
     maisons.cpp \
-    mimeattachment.cpp \
-    mimecontentformatter.cpp \
     mimehtml.cpp \
     mimeinlinefile.cpp \
     mimemessage.cpp \
@@ -27,16 +25,14 @@ SOURCES += \
     mimepart.cpp \
     mimetext.cpp \
     quotedprintable.cpp \
-    smtpclient.cpp \
     superviseurs.cpp
 
 HEADERS += \
+    SmtpMime \
+    arduino.h \
     connection.h \
-    emailaddress.h \
     mainwindow.h \
     maisons.h \
-    mimeattachment.h \
-    mimecontentformatter.h \
     mimefile.h \
     mimehtml.h \
     mimeinlinefile.h \
@@ -45,7 +41,6 @@ HEADERS += \
     mimepart.h \
     mimetext.h \
     quotedprintable.h \
-    smtpclient.h \
     smtpexports.h \
     superviseurs.h
 

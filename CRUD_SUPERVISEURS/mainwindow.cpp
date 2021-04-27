@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "superviseurs.h"
 #include "maisons.h"
+#include "arduino.h"
 #include <QMessageBox>
 #include <QSqlQueryModel>
 #include <QSqlQuery>
@@ -12,7 +13,7 @@
 #include <QFileDialog>
 #include <QSpinBox>
 #include <QMetaObject>
-#include <SmtpMime>
+
 
 
 
@@ -25,6 +26,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->le_id->setValidator( new QIntValidator(0,9999999,this));
     ui->tableView->setModel(S.afficher());
     ui->tableView_2->setModel(M.afficher_maison());
+    ui->setupUi(this);
+    int ret=A.connect_arduino();
+    switch(ret){
+    case(0):qDebug() <<"arduino is available and connected to : "<< A.getarduino_port_name();
+        break;
+       case(1):qDebug() <<"arduino is available but not connected to :" <<A.getarduino_port_name();
+        break;
+    case(-1):qDebug() <<"arduino is not available";
+    }
+    QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
 }
 
 MainWindow::~MainWindow()
@@ -183,53 +194,17 @@ void MainWindow::on_pb_supprimer_maison_clicked()
      msgBox.exec();
 }
 
-void MainWindow::on_pb_envoyer_mail_clicked()
+void MainWindow::update_label()
 {
-    // This is a first demo application of the SmtpClient for Qt project
-
-        // First we need to create an SmtpClient object
-        // We will use the Gmail's smtp server (smtp.gmail.com, port 465, ssl)
-
-        SmtpClient smtp("smtp.esprit.tn", 465, SmtpClient::SslConnection);
-
-        // We need to set the username (your email address) and the password
-        // for smtp authentification.
-
-        smtp.setUser("zied.lazrag@esprit.tn");
-        smtp.setPassword("zizou12309Z");
-
-        // Now we create a MimeMessage object. This will be the email.
-
-        MimeMessage message;
-
-        message.setSender(new EmailAddress("zied.lazrag@esprit.tn", "Zied LAZRAG"));
-        message.addRecipient(new EmailAddress("ziedlazrag7@gmail.com", "Zied Lazrag"));
-        message.setSubject("Tutorials mailing");
-
-        // Now add some text to the email.
-        // First we create a MimeText object.
-
-        MimeText text;
-
-        text.setText("Hi, You are good \nThis is a simple email message.\n");
-
-        // Now add it to the mail
-
-        message.addPart(&text);
-
-        // Now we can send the mail
-
-        smtp.connectToHost();
-        smtp.login();
-        if(smtp.sendMail(message))
-        {
-            QMessageBox::information(this, "OK" , "Courrier envoyé correctement");
-
-        }
-        else
-        {
-            QMessageBox::critical(this, "Error", "Courrier non envoyé");
-
-        }
-        smtp.quit();
+    data=A.read_from_arduino();
+    if(data=="1")
+        ui->label_3->setText("ON");
+    else if (data=="0")
+        ui->label_3->setText("OFF");
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+    A.write_to_arduino("1");
+}
+
