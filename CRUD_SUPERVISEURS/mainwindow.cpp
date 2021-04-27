@@ -203,8 +203,4 @@ void MainWindow::update_label()
         ui->label_3->setText("OFF");
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-    A.write_to_arduino("1");
-}
 
