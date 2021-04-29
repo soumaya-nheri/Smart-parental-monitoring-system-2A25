@@ -1,5 +1,7 @@
 #include "arduino.h"
 #include <QDebug>
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
 
 
 Arduino::Arduino()
@@ -35,6 +37,7 @@ int Arduino::connect_arduino()
         }
         return 1;
     }
+    return -1;
 }
 
 int Arduino::close_arduino()
@@ -57,15 +60,17 @@ QByteArray Arduino::read_from_arduino()
     return data;
 }
 
-int Arduino::write_arduino(QByteArray d)
+int Arduino::write_to_arduino(QByteArray d)
 {
     if(serial->isWritable())
     {
         serial->write(d);// envoyer des données vers Arduino
+        return 0;
     }
-    else{
+    else
         qDebug() << "Couldn't write to serial!";
-    }
+    return 1;
 }
+
 
 

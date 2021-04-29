@@ -1,3 +1,4 @@
+
 #ifndef ARDUINO_H
 #define ARDUINO_H
 #include <QtSerialPort/QSerialPort>
@@ -9,7 +10,7 @@ public:
     Arduino();
     int connect_arduino();
     int close_arduino();
-    int write_arduino( QByteArray );
+    int write_to_arduino( QByteArray );
     QByteArray read_from_arduino ();
     QSerialPort* getserial ();
     QString getarduino_port_name ();

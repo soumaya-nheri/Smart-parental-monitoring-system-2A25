@@ -22,3 +22,4 @@ void Connection::fermerConnection()
 {
     db.close();
 }
+

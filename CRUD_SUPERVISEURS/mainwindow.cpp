@@ -3,19 +3,19 @@
 #include "superviseurs.h"
 #include "maisons.h"
 #include "arduino.h"
+#include "smtp.h"
+#include "localisation.h"
+#include <QtCore>
+#include <QTextEdit>
 #include <QMessageBox>
-#include <QSqlQueryModel>
-#include <QSqlQuery>
 #include <QTextDocument>
 #include <QDebug>
 #include <QPainter>
 #include <QIntValidator>
 #include <QFileDialog>
 #include <QSpinBox>
+#include <QObject>
 #include <QMetaObject>
-
-
-
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -23,25 +23,35 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
-    ui->le_id->setValidator( new QIntValidator(0,9999999,this));
-    ui->tableView->setModel(S.afficher());
-    ui->tableView_2->setModel(M.afficher_maison());
-    ui->setupUi(this);
-    int ret=A.connect_arduino();
-    switch(ret){
-    case(0):qDebug() <<"arduino is available and connected to : "<< A.getarduino_port_name();
-        break;
-       case(1):qDebug() <<"arduino is available but not connected to :" <<A.getarduino_port_name();
-        break;
-    case(-1):qDebug() <<"arduino is not available";
-    }
-    QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
+        ui->le_id->setValidator( new QIntValidator(0,9999999,this));
+        ui->tableView->setModel(S.afficher());
+        ui->tableView_2->setModel(M.afficher_maison());
+        ui->setupUi(this);
+        connect(ui->sendBtn, SIGNAL(clicked()),this, SLOT(sendMail()));
+        connect(ui->exitBtn, SIGNAL(clicked()),this, SLOT(close()));
+        connect(ui->browseBtn, SIGNAL(clicked()), this, SLOT(browse()));
+        ui->setupUi(this);
+            int ret=A.connect_arduino();
+            switch(ret){
+            case(0):qDebug() <<"arduino is available and connected to : "<< A.getarduino_port_name();
+                break;
+               case(1):qDebug() <<"arduino is available but not connected to :" <<A.getarduino_port_name();
+                break;
+            case(-1):qDebug() <<"arduino is not available";
+            }
+            QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
+            textEdit = new QTextEdit;
+                setCentralWidget(textEdit);
+
+                localisation *source = new localisation(this);
+                connect(source, SIGNAL(positionUpdated(QGeoPositionInfo)),
+                        this, SLOT(positionUpdated(QGeoPositionInfo)));
+                 source->startUpdates();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-
 }
 
 void MainWindow::on_pb_ajouter_superviseur_clicked()
@@ -194,13 +204,71 @@ void MainWindow::on_pb_supprimer_maison_clicked()
      msgBox.exec();
 }
 
+void MainWindow::browse()
+{
+    files.clear();
+
+    QFileDialog dialog(this);
+    dialog.setDirectory(QDir::homePath());
+    dialog.setFileMode(QFileDialog::ExistingFiles);
+
+    if (dialog.exec())
+        files = dialog.selectedFiles();
+
+    QString fileListString;
+    foreach(QString file, files)
+        fileListString.append( "\"" + QFileInfo(file).fileName() + "\" " );
+
+    ui->file->setText( fileListString );
+
+}
+
+void MainWindow::sendMail()
+{
+    Smtp* smtp = new Smtp(ui->uname->text(), ui->paswd->text(), ui->server->text(), ui->port->text().toInt());
+    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+    if( !files.isEmpty() )
+        smtp->sendMail(ui->uname->text(), ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText(), files );
+    else
+        smtp->sendMail(ui->uname->text(), ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText());
+}
+
+void MainWindow::mailSent(QString status)
+{
+    if(status == "Message sent")
+        QMessageBox::warning( 0, tr( "Qt Simple SMTP client" ), tr( "Message sent!\n\n" ) );
+}
+
 void MainWindow::update_label()
 {
     data=A.read_from_arduino();
     if(data=="1")
-        ui->label_3->setText("ON");
+        ui->label_3->setText("ON");// si les donnees de arduino via la liaison serie sont egales à 1
+    // alors afficher ON
     else if (data=="0")
         ui->label_3->setText("OFF");
 }
 
+void MainWindow::on_pushButton_clicked()
+{
+    A.write_to_arduino("1"); // send 1 to arduino
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    A.write_to_arduino("0"); // send 0 to arduino
+}
+void MainWindow::on_pushButton_3_clicked()
+{
+    A.write_to_arduino("2"); // send 2 to arduino
+}
+void MainWindow::on_pushButton_4_clicked()
+{
+    A.write_to_arduino("3"); // send 3 to arduino
+}
+void MainWindow::positionUpdated(const QGeoPositionInfo &info)
+{
+    textEdit->append(QString("Position updated: Date/time = %1, Coordinate = %2").arg(info.timestamp().toString()).arg(info.coordinate().toString()));
+}
 

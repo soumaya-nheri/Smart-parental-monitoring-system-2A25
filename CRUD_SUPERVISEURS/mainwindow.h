@@ -2,12 +2,15 @@
 #define MAINWINDOW_H
 #include "superviseurs.h"
 #include "maisons.h"
+#include "smtp.h"
 #include "arduino.h"
 
-#include <QMainWindow>
 
+#include <QMainWindow>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
+class QGeoPositionInfo;
+class QTextEdit;
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -25,18 +28,25 @@ private slots:
     void on_pb_ajouter_maison_clicked();
     void on_pb_modifier_maison_clicked();
     void on_pb_supprimer_maison_clicked();
-    void update_label();
-    void on_pushButtom_clicked();
-    void on_pushButtom_2_clicked();
-    void on_pushButtom_3_clicked();
-    void on_pushButtom_4_clicked();
-
+    void sendMail();
+    void mailSent(QString);
+    void browse();
+    void update_label();// slot de mise à jour du label etat
+    // de la lampe 1 , ce slot est lancé à chaque récéption d'un message de Arduino
+    void on_pushButton_clicked();// bouton ON
+    void on_pushButton_2_clicked();// bouton OFF
+    void on_pushButton_3_clicked();// bouton +
+    void on_pushButton_4_clicked();// bouton -
+    void positionUpdated(const QGeoPositionInfo &info);
 
 private:
     Ui::MainWindow *ui;
     SUPERVISEURS S;
     MAISONS M;
     QByteArray data ;
-    Arduino A;
+    Arduino A ;
+    QStringList files;
+    QTextEdit *textEdit;
+
 };
 #endif // MAINWINDOW_H

@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
     Connection c;
     bool test=c.createConnection();
     MainWindow w;
+    w.show();
 
     //bonjour tortoise
 
