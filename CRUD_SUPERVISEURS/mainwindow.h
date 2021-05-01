@@ -6,6 +6,7 @@
 #include "arduino.h"
 
 
+
 #include <QMainWindow>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -33,20 +34,20 @@ private slots:
     void browse();
     void update_label();// slot de mise à jour du label etat
     // de la lampe 1 , ce slot est lancé à chaque récéption d'un message de Arduino
-    void on_pushButton_clicked();// bouton ON
-    void on_pushButton_2_clicked();// bouton OFF
-    void on_pushButton_3_clicked();// bouton +
-    void on_pushButton_4_clicked();// bouton -
-    void positionUpdated(const QGeoPositionInfo &info);
+    void on_pushButton_clicked();// bouton activer le capteur
+    void on_pushButton_2_clicked();// bouton désactiver le capteur
+    //void positionUpdated(const QGeoPositionInfo &info);
+
+
 
 private:
     Ui::MainWindow *ui;
     SUPERVISEURS S;
     MAISONS M;
-    QByteArray data ;
     Arduino A ;
+    QByteArray data ;
     QStringList files;
-    QTextEdit *textEdit;
+   // QTextEdit *textEdit;
 
 };
 #endif // MAINWINDOW_H

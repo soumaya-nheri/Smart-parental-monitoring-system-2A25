@@ -1,12 +1,26 @@
 #include "arduino.h"
 #include <QDebug>
-#include <QtSerialPort/QSerialPort>
-#include <QtSerialPort/QSerialPortInfo>
 
 
 Arduino::Arduino()
 {
+      data = "";
+      arduino_port_name="";
+      arduino_is_available=false;
+      serial = new QSerialPort;
 
+}
+
+
+QString Arduino::getarduino_port_name()
+{
+    return arduino_port_name;
+}
+
+
+QSerialPort* Arduino::getserial()
+{
+    return serial;
 }
 
 int Arduino::connect_arduino()
@@ -22,7 +36,7 @@ int Arduino::connect_arduino()
             }
         }
     }
-    qDebug() << "arduino_port_name is :" << arduino_port_name;
+    qDebug() << "arduino_port_name is :" << arduino_port_name; // msg de confirmation
     if (arduino_is_available)
     {
         serial->setPortName(arduino_port_name);

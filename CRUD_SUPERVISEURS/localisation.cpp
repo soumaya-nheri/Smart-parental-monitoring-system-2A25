@@ -1,4 +1,4 @@
-#include <QtCore>
+/*#include <QtCore>
 
 #include "localisation.h"
 
@@ -14,8 +14,8 @@ localisation::localisation(QObject *parent)
         qWarning() << "Error: cannot open source file" << logFile->fileName();
 }
 
-QGeoPositionInfo localisation::lastKnownPosition(bool /*fromSatellitePositioningMethodsOnly*/) const
-{
+QGeoPositionInfo localisation::lastKnownPosition(bool /*fromSatellitePositioningMethodsOnly*///) const
+/*{
     return lastPosition;
 }
 
@@ -43,7 +43,7 @@ void localisation::stopUpdates()
     timer->stop();
 }
 
-void localisation::requestUpdate(int /*timeout*/)
+void localisation::requestUpdate(int /*timeout*//*)
 {
     // For simplicity, ignore timeout - assume that if data is not available
     // now, no data will be added to the file later
@@ -80,4 +80,4 @@ void localisation::readNextPosition()
 QGeoPositionInfoSource::Error localisation::error() const
 {
     return QGeoPositionInfoSource::NoError;
-}
+}*/

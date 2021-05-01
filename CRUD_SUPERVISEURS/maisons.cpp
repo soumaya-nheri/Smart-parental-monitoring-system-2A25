@@ -27,7 +27,7 @@ bool MAISONS::ajouter_maison()
 {
     QSqlQuery query;
     QString id_string= QString::number(id);
-    query.prepare("INSERT INTO MAISONS (id,adresse,nb_chambre)""VALUES (:id, :adresse, :nbr_chambre)");
+    query.prepare("INSERT INTO MAISONS (id_maison,adresse,nbr_chambre)""VALUES (:id, :adresse, :nbr_chambre)");
     query.bindValue(":id", id_string);
     query.bindValue(":adresse", adresse);
     query.bindValue(":nbr_chambre", nbr_chambre);
@@ -37,7 +37,7 @@ bool MAISONS::ajouter_maison()
 bool MAISONS::modifier_maison(int id)
 {
     QSqlQuery query;
-    query.prepare("UPDATE MAISONS SET adresse=:adresse ,nbr_chambre=:nbr_chambre , id=:id");
+    query.prepare("UPDATE MAISONS SET adresse=:adresse ,nbr_chambre=:nbr_chambre , id_maison=:id");
     query.bindValue(":id", id);
     query.bindValue(":adresse", adresse);
     query.bindValue(":nbr_chambre", nbr_chambre);
@@ -59,7 +59,7 @@ bool MAISONS::supprimer_maison(int id)
 {
     QSqlQuery query;
     QString id_string= QString::number(id);
-    query.prepare(" DELETE FROM MAISONS WHERE id=:id");
+    query.prepare(" DELETE FROM MAISONS WHERE id_maison=:id");
     query.bindValue(0 , id);
     return query.exec();
 }

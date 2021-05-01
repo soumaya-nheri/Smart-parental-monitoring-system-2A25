@@ -44,7 +44,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES +=
+DISTFILES += \
+    simplelog.txt
 
 RESOURCES +=
     target.path = $$[QT_INSTALL_EXAMPLES]/positioning/localisation

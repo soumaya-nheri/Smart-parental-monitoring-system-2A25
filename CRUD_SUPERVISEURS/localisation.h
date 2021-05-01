@@ -1,4 +1,4 @@
-#ifndef LOCALISATION_H
+/*#ifndef LOCALISATION_H
 #define LOCALISATION
 #include <QtPositioning/qgeopositioninfosource.h>
 QT_BEGIN_NAMESPACE
@@ -34,4 +34,4 @@ private:
     QGeoPositionInfo lastPosition;
 };
 
-#endif // LOCALISATION_H
+#endif // LOCALISATION_H*/

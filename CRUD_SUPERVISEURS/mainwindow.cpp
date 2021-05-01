@@ -16,21 +16,22 @@
 #include <QSpinBox>
 #include <QObject>
 #include <QMetaObject>
+#include <QGeoCoordinate>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->stackedWidget->setCurrentIndex(0);
         ui->le_id->setValidator( new QIntValidator(0,9999999,this));
+        ui->age->setValidator(new QIntValidator(0,9999999,this));
+        ui->id_maison->setValidator( new QIntValidator(0,9999999,this));
+        ui->nbr_chambre->setValidator(new QIntValidator(0,9999999,this));
         ui->tableView->setModel(S.afficher());
         ui->tableView_2->setModel(M.afficher_maison());
-        ui->setupUi(this);
         connect(ui->sendBtn, SIGNAL(clicked()),this, SLOT(sendMail()));
         connect(ui->exitBtn, SIGNAL(clicked()),this, SLOT(close()));
         connect(ui->browseBtn, SIGNAL(clicked()), this, SLOT(browse()));
-        ui->setupUi(this);
             int ret=A.connect_arduino();
             switch(ret){
             case(0):qDebug() <<"arduino is available and connected to : "<< A.getarduino_port_name();
@@ -40,13 +41,13 @@ MainWindow::MainWindow(QWidget *parent)
             case(-1):qDebug() <<"arduino is not available";
             }
             QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
-            textEdit = new QTextEdit;
+            /*textEdit = new QTextEdit;
                 setCentralWidget(textEdit);
 
                 localisation *source = new localisation(this);
                 connect(source, SIGNAL(positionUpdated(QGeoPositionInfo)),
                         this, SLOT(positionUpdated(QGeoPositionInfo)));
-                 source->startUpdates();
+                 source->startUpdates();*/
 }
 
 MainWindow::~MainWindow()
@@ -56,7 +57,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pb_ajouter_superviseur_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
     int id=ui->le_id->text().toInt();
     QString nom=ui->le_Nom->text();
     QString prenom=ui->le_Prenom->text();
@@ -64,6 +64,7 @@ void MainWindow::on_pb_ajouter_superviseur_clicked()
     QString sexe=ui->Sexe_H->text();
     int age=ui->age->text().toInt();
   SUPERVISEURS S(id,nom,prenom,email,sexe,age);
+  ui->tableView->setModel(S.afficher());
 
 
 if(S.ajouter())
@@ -88,7 +89,6 @@ if(S.ajouter())
 
 void MainWindow::on_pb_modifier_superviseur_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
     int id=ui->le_id->text().toInt();
     QString nom=ui->le_Nom->text();
     QString prenom=ui->le_Prenom->text();
@@ -96,6 +96,7 @@ void MainWindow::on_pb_modifier_superviseur_clicked()
     QString sexe=ui->Sexe_H->text();
     int age=ui->age->text().toInt();
   SUPERVISEURS S(id,nom,prenom,email,sexe,age);
+  ui->tableView->setModel(S.afficher());
 
 
 if(S.modifier(id))
@@ -121,7 +122,6 @@ if(S.modifier(id))
 
 void MainWindow::on_pb_supprimer_superviseur_clicked()
 {
-     ui->stackedWidget->setCurrentIndex(0);
      SUPERVISEURS S1;
      S1.setid(ui->id_supp_superviseur->text().toInt());
      bool test=S1.supprimer(S1.getid());
@@ -141,11 +141,11 @@ void MainWindow::on_pb_supprimer_superviseur_clicked()
 
 void MainWindow::on_pb_ajouter_maison_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
     int id=ui->id_maison->text().toInt();
     QString adresse=ui->adresse_maison->text();
     int nbr_chambre=ui->nbr_chambre->text().toInt();
   MAISONS M(id,adresse,nbr_chambre);
+  ui->tableView_2->setModel(M.afficher_maison());
 
 
 if(M.ajouter_maison())
@@ -153,19 +153,25 @@ if(M.ajouter_maison())
     ui->id_maison->setText("");
     ui->adresse_maison->setText("");
     ui->nbr_chambre->setText("");
-    QMessageBox::information(nullptr, QObject::tr("Ajouter un superviseur"),
+    QMessageBox::information(nullptr, QObject::tr("Ajouter une maison"),
                        QObject::tr("Ajout avec succès !.\n"
                                    "Click Close to exit."), QMessageBox::Close);
     }
+else
+{
+    QMessageBox::critical(nullptr, QObject::tr("Ajouter une maison"),
+                       QObject::tr("Erreur l'id existe deja!.\n"
+                                   "Click Close to exit."), QMessageBox::Close);
+}
 }
 
 void MainWindow::on_pb_modifier_maison_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
     int id=ui->id_maison->text().toInt();
     QString adresse=ui->adresse_maison->text();
     int nbr_chambre=ui->nbr_chambre->text().toInt();
   MAISONS M(id,adresse,nbr_chambre);
+  ui->tableView_2->setModel(M.afficher_maison());
 
 
 if(M.modifier_maison(id))
@@ -173,29 +179,29 @@ if(M.modifier_maison(id))
     ui->id_maison->text().toInt();
     ui->adresse_maison->text();
     ui->nbr_chambre->text().toInt();
-    QMessageBox::information(nullptr, QObject::tr("Modifier un maison"),
+    QMessageBox::information(nullptr, QObject::tr("Modifier une maison"),
                        QObject::tr("Ajout avec succès !.\n"
                                    "Click Close to exit."), QMessageBox::Close);
     }
     else
     {
-        QMessageBox::critical(nullptr, QObject::tr("Modifier un maison"),
+        QMessageBox::critical(nullptr, QObject::tr("Modifier une maison"),
                            QObject::tr("Erreur l'id existe deja!.\n"
                                        "Click Close to exit."), QMessageBox::Close);
     }
 }
 void MainWindow::on_pb_supprimer_maison_clicked()
 {
-     ui->stackedWidget->setCurrentIndex(1);
-     MAISONS M1;
-     M1.setid(ui->id_supp_maison->text().toInt());
-     bool test=M1.supprimer_maison(M1.getid());
+
+     MAISONS M;
+     M.setid(ui->id_supp_maison->text().toInt());
+     bool test=M.supprimer_maison(M.getid());
 
      QMessageBox msgBox;
      if(test)
      {
          msgBox.setText("Suppression avec succes");
-         ui->tableView_2->setModel(M1.afficher_maison());
+         ui->tableView_2->setModel(M.afficher_maison());
      }
      else
      {
@@ -240,35 +246,41 @@ void MainWindow::mailSent(QString status)
         QMessageBox::warning( 0, tr( "Qt Simple SMTP client" ), tr( "Message sent!\n\n" ) );
 }
 
-void MainWindow::update_label()
-{
-    data=A.read_from_arduino();
-    if(data=="1")
-        ui->label_3->setText("ON");// si les donnees de arduino via la liaison serie sont egales à 1
-    // alors afficher ON
-    else if (data=="0")
-        ui->label_3->setText("OFF");
-}
-
 void MainWindow::on_pushButton_clicked()
 {
     A.write_to_arduino("1"); // send 1 to arduino
+    qDebug() << "Vous avez activé le capteur" ;
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
     A.write_to_arduino("0"); // send 0 to arduino
-}
-void MainWindow::on_pushButton_3_clicked()
-{
-    A.write_to_arduino("2"); // send 2 to arduino
-}
-void MainWindow::on_pushButton_4_clicked()
-{
-    A.write_to_arduino("3"); // send 3 to arduino
-}
-void MainWindow::positionUpdated(const QGeoPositionInfo &info)
-{
-    textEdit->append(QString("Position updated: Date/time = %1, Coordinate = %2").arg(info.timestamp().toString()).arg(info.coordinate().toString()));
+    qDebug() << "vous n'avait pas activé le capteur" ;
 }
 
+void MainWindow::update_label()
+{
+    data=A.read_from_arduino();// lire les données de arduino
+    if (data=="0")
+    {
+        ui->label_21->setText("Votre capteur est encore désactivé ");
+    }
+    else if (data=="1")
+    {
+        ui->label_21->setText("Votre capteur est correctement activé");
+    }
+    else if (data=="2")
+    {
+        qDebug() << " quelqu'un est proche , votre buzzer est en marche";
+    }
+    else if (data=="3")
+    {
+        qDebug() << " Il n'y a aucun , le buzzer est désactiver";
+    }
+
+}
+
+/*void MainWindow::positionUpdated(const QGeoPositionInfo &info)
+{
+    textEdit->append(QString("Position updated: Date/time = %1, Coordinate = %2").arg(info.timestamp().toString()).arg(info.coordinate().toString()));
+}*/
