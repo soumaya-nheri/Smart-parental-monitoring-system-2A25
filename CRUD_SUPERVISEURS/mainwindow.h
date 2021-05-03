@@ -34,8 +34,8 @@ private slots:
     void browse();
     void update_label();// slot de mise à jour du label etat
     // de la lampe 1 , ce slot est lancé à chaque récéption d'un message de Arduino
-    void on_pushButton_clicked();// bouton activer le capteur
-    void on_pushButton_2_clicked();// bouton désactiver le capteur
+    void on_pb_activer_capteur_clicked();// bouton activer le capteur
+    void on_pb_desactiver_capteur_clicked();// bouton désactiver le capteur
     //void positionUpdated(const QGeoPositionInfo &info);
 
 

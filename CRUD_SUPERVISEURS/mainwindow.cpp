@@ -246,13 +246,13 @@ void MainWindow::mailSent(QString status)
         QMessageBox::warning( 0, tr( "Qt Simple SMTP client" ), tr( "Message sent!\n\n" ) );
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_pb_activer_capteur_clicked()
 {
     A.write_to_arduino("1"); // send 1 to arduino
     qDebug() << "Vous avez activé le capteur" ;
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_pb_desactiver_capteur_clicked()
 {
     A.write_to_arduino("0"); // send 0 to arduino
     qDebug() << "vous n'avait pas activé le capteur" ;

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -788,7 +788,7 @@ QTabBar::tab:selected{	background-color: qlineargradient(spread:repeat, x1:1, y1
 QTabBar::tab:!selected:hover{   background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:0.4 #343434, stop:0.2 #343434, stop:0.1 #ffaa00);}</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab_6">
        <attribute name="title">
@@ -1059,7 +1059,7 @@ border-color: #ffffff;}</string>
          <string>Activer le capteur ?</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="pb_activer_capteur">
         <property name="geometry">
          <rect>
           <x>210</x>
@@ -1072,7 +1072,7 @@ border-color: #ffffff;}</string>
          <string>Oui</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="pb_desactiver_capteur">
         <property name="geometry">
          <rect>
           <x>330</x>
