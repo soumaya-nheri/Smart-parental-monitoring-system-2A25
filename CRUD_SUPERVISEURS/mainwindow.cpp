@@ -78,6 +78,7 @@ if(S.ajouter())
     QMessageBox::information(nullptr, QObject::tr("Ajouter un superviseur"),
                        QObject::tr("Ajout avec succès !.\n"
                                    "Click Close to exit."), QMessageBox::Close);
+    ui->tableView->setModel(S.afficher());
     }
     else
     {
@@ -108,8 +109,9 @@ if(S.modifier(id))
     ui->Sexe_H->setText("");
     ui->age->setText("");
     QMessageBox::information(nullptr, QObject::tr("Modifier un superviseur"),
-                       QObject::tr("Ajout avec succès !.\n"
+                       QObject::tr("modifier avec succès !.\n"
                                    "Click Close to exit."), QMessageBox::Close);
+    ui->tableView->setModel(S.afficher());
     }
     else
     {
@@ -123,6 +125,7 @@ if(S.modifier(id))
 void MainWindow::on_pb_supprimer_superviseur_clicked()
 {
      SUPERVISEURS S1;
+     int id=ui->id_supp_superviseur->text().toInt();
      S1.setid(ui->id_supp_superviseur->text().toInt());
      bool test=S1.supprimer(S1.getid());
 
@@ -137,6 +140,18 @@ void MainWindow::on_pb_supprimer_superviseur_clicked()
          msgBox.setText("Echec de suppression");
      }
      msgBox.exec();
+     if(S.supprimer(id))
+         {
+     QMessageBox::information(nullptr, QObject::tr("Supprimer un superviseur"),
+                        QObject::tr("Supprimer avec succès !.\n"
+                                    "Click Close to exit."), QMessageBox::Close);
+     }
+     else
+     {
+         QMessageBox::critical(nullptr, QObject::tr("Supprimer un superviseur"),
+                            QObject::tr("Erreur l'id existe deja!.\n"
+                                        "Click Close to exit."), QMessageBox::Close);
+     }
 }
 
 void MainWindow::on_pb_ajouter_maison_clicked()
@@ -156,6 +171,7 @@ if(M.ajouter_maison())
     QMessageBox::information(nullptr, QObject::tr("Ajouter une maison"),
                        QObject::tr("Ajout avec succès !.\n"
                                    "Click Close to exit."), QMessageBox::Close);
+    ui->tableView_2->setModel(M.afficher_maison());
     }
 else
 {
@@ -174,14 +190,16 @@ void MainWindow::on_pb_modifier_maison_clicked()
   ui->tableView_2->setModel(M.afficher_maison());
 
 
+
 if(M.modifier_maison(id))
     {
     ui->id_maison->text().toInt();
     ui->adresse_maison->text();
     ui->nbr_chambre->text().toInt();
     QMessageBox::information(nullptr, QObject::tr("Modifier une maison"),
-                       QObject::tr("Ajout avec succès !.\n"
+                       QObject::tr("Modifer avec succès !.\n"
                                    "Click Close to exit."), QMessageBox::Close);
+    ui->tableView_2->setModel(M.afficher_maison());
     }
     else
     {
@@ -194,6 +212,7 @@ void MainWindow::on_pb_supprimer_maison_clicked()
 {
 
      MAISONS M;
+     int id=ui->id_supp_maison->text().toInt();
      M.setid(ui->id_supp_maison->text().toInt());
      bool test=M.supprimer_maison(M.getid());
 
@@ -208,6 +227,20 @@ void MainWindow::on_pb_supprimer_maison_clicked()
          msgBox.setText("Echec de suppression");
      }
      msgBox.exec();
+     if(M.supprimer_maison(id))
+         {
+         QMessageBox::information(nullptr, QObject::tr("Supprimer une maison"),
+                            QObject::tr("Supprimer avec succès !.\n"
+                                        "Click Close to exit."), QMessageBox::Close);
+         ui->tableView_2->setModel(M.afficher_maison());
+         }
+         else
+         {
+             QMessageBox::critical(nullptr, QObject::tr("Supprimer une maison"),
+                                QObject::tr("Erreur l'id existe deja!.\n"
+                                            "Click Close to exit."), QMessageBox::Close);
+         }
+
 }
 
 void MainWindow::browse()
