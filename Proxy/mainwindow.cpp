@@ -15,6 +15,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->table->setModel(tmpapp.afficher());
     ui->tablesites->setModel(tmpsite.affichersites());
+    ui->lineEdit_nomappareil->setValidator(new QIntValidator(0,9999,this));
+    ui->lineEdit_numappareil->setValidator(new QIntValidator(0,99,this));
+    ui->idsite->setValidator(new QIntValidator(0,9999,this));
 }
 
 MainWindow::~MainWindow()
@@ -42,6 +45,10 @@ void MainWindow::on_Button_Ajouter_clicked()
     bool test=a.ajouterappareil();
     if (test) {
         ui->table->setModel(tmpapp.afficher());
+        ui->lineEdit_nomappareil->clear();
+        ui->lineEdit_typeappareil->clear() ;
+        ui->lineEdit_numappareil->clear() ;
+        ui->lineEdit_proprio->clear() ;
         QMessageBox::information(nullptr, QObject::tr("OK"),QObject::tr("ajout effectué"),QMessageBox::Cancel);
     } else
     {
@@ -115,6 +122,8 @@ void MainWindow::on_suppsite_clicked()
         QMessageBox::information(nullptr, QObject::tr("OK"),
                     QObject::tr("Suppression effectuée.\n"
                                 "Click Cancel to exit." ), QMessageBox::Cancel);
+        ui->lineEdit_susite->clear();
+
 
 }
     else

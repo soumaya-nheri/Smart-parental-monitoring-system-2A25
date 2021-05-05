@@ -27,6 +27,10 @@ void modification::on_pushButton_clicked()
         QMessageBox::information(nullptr, QObject::tr("OK"),
                     QObject::tr("Modification effectuée.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
+        ui->lineEdit->clear();
+        ui->lineEdit_proprio->clear();
+        ui->lineEdit_type->clear();
+        ui->lineEdit_num->clear();
 
 }
     else

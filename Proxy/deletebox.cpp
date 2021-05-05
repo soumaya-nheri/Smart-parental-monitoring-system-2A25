@@ -33,6 +33,8 @@ void DeleteBox::on_suppbutton_clicked()
         QMessageBox::information(nullptr, QObject::tr("OK"),
                     QObject::tr("Suppression effectuée.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
+        ui->lineEdit->clear();
+
 
 }
     else
