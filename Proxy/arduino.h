@@ -13,8 +13,8 @@ public:
     int write_to_arduino(QByteArray);
 
     QByteArray read_from_arduino();
-    QSerialPort *getserial(){}
-    QString getarduino_port_name(){}
+    QSerialPort *getserial();
+    QString getarduino_port_name();
 private:
     QSerialPort * serial;
     static const quint16 arduino_uno_vendor_id=9025;

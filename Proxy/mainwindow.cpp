@@ -53,7 +53,6 @@ void MainWindow::on_pushButton_clicked()
 {
     verif v;
 
-    v.update();
     v.exec();
 }
 

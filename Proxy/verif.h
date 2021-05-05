@@ -2,6 +2,9 @@
 #define VERIF_H
 
 #include <QDialog>
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
+#include "arduino.h"
 
 namespace Ui {
 class verif;
@@ -16,9 +19,14 @@ public:
     void update();
     ~verif();
 
+private slots:
+    void on_pushButton_clicked();
+    void update_label();
+
 private:
     Ui::verif *ui;
-    QTimer *timer;
+    QByteArray data;
+    Arduino tmp;
     int i=0;
 };
 

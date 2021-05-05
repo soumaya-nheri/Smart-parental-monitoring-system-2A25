@@ -137,8 +137,8 @@ QTabBar::tab:!selected:hover
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>50</y>
+     <x>310</x>
+     <y>70</y>
      <width>81</width>
      <height>161</height>
     </rect>
@@ -150,44 +150,67 @@ QTabBar::tab:!selected:hover
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QProgressBar" name="progressBar">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>70</y>
-     <width>211</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="value">
-    <number>24</number>
-   </property>
-  </widget>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>20</y>
-     <width>191</width>
-     <height>41</height>
+     <y>70</y>
+     <width>251</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="title">
     <string>Vérification</string>
    </property>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="label_verif">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>15</y>
-      <width>161</width>
+      <width>211</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>Vérificationen cours...</string>
+     <string>Vérification en cours...</string>
     </property>
    </widget>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>30</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Site à vérifier :</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_verif">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>30</y>
+     <width>151</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>30</y>
+     <width>81</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Vérifier</string>
+   </property>
   </widget>
  </widget>
  <resources/>

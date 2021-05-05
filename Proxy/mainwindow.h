@@ -31,11 +31,7 @@ private slots:
 
     void on_pushButton_2_clicked();
 
-    void on_pushButton_11_clicked();
-
     void on_ajoutersitebuton_clicked();
-
-    void on_idsite_editingFinished();
 
     void on_suppsite_clicked();
 
