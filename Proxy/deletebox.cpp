@@ -27,6 +27,7 @@ void DeleteBox::on_suppbutton_clicked()
 {
     int i=ui->lineEdit->text().toInt();
     bool testsupp = tmpapp.supprimerappareil(i);
+    //testsupp = false;
     if (testsupp){
 
         QMessageBox::information(nullptr, QObject::tr("OK"),

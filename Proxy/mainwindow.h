@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "appareil.h"
+#include "sites.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -30,9 +31,18 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_11_clicked();
+
+    void on_ajoutersitebuton_clicked();
+
+    void on_idsite_editingFinished();
+
+    void on_suppsite_clicked();
+
 private:
     Ui::MainWindow *ui;
     Appareil tmpapp;
+    sites tmpsite;
 
 
 };

@@ -60,8 +60,8 @@ QLabel
 /*-----QToolButton-----*/
 QToolButton
 {
-	background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
-	color: #000;
+	background-color: rgb(178, 30, 58);
+	
 	font-size: 14pt;
 	border-radius: 4px;
 	padding: 10px;
@@ -71,7 +71,7 @@ QToolButton
 
 QToolButton::pressed
 {
-	background-color: #6b960f;
+	background-color: rgb(178, 30, 58);
 
 }
 
@@ -85,7 +85,7 @@ QTabBar::tab
     border: 1px solid #444;
     border-bottom-style: none;
 	border-top-style: none;
-    background-color: #323232;
+    background-color: rgb(178, 30, 58);
     padding-top: 3px;
     padding-bottom: 2px;
     margin-right: -1px;
@@ -94,7 +94,7 @@ QTabBar::tab
 
 QTabWidget::pane 
 {
-    border: 1px solid qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+    border: 1px solid rgb(178, 30, 58);
     top: 1px;
 
 }
@@ -116,7 +116,7 @@ QTabBar::tab:!selected
     color: #fff;
     border-bottom-style: solid;
     margin-top: 3px;
-    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:.4 #343434);
+    background-color: rgb(178, 30, 58);
 
 }
 
@@ -145,7 +145,7 @@ QTabBar::tab:!selected:hover
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_appareil">
      <attribute name="title">
@@ -433,108 +433,6 @@ QTabBar::tab:!selected:hover
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QTableWidget" name="tableWidget">
-       <property name="geometry">
-        <rect>
-         <x>100</x>
-         <y>-50</y>
-         <width>391</width>
-         <height>151</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="showGrid">
-        <bool>false</bool>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
-       </property>
-       <property name="cornerButtonEnabled">
-        <bool>true</bool>
-       </property>
-       <property name="rowCount">
-        <number>3</number>
-       </property>
-       <attribute name="horizontalHeaderHighlightSections">
-        <bool>true</bool>
-       </attribute>
-       <attribute name="verticalHeaderVisible">
-        <bool>false</bool>
-       </attribute>
-       <row>
-        <property name="text">
-         <string>01</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>02</string>
-        </property>
-       </row>
-       <row/>
-       <column>
-        <property name="text">
-         <string>ID</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>Type</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>Propriétaire</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>Num</string>
-        </property>
-       </column>
-       <item row="0" column="0">
-        <property name="text">
-         <string>1000</string>
-        </property>
-       </item>
-       <item row="0" column="1">
-        <property name="text">
-         <string>Ordinateur</string>
-        </property>
-       </item>
-       <item row="0" column="2">
-        <property name="text">
-         <string>Ramy</string>
-        </property>
-       </item>
-       <item row="0" column="3">
-        <property name="text">
-         <string>1</string>
-        </property>
-       </item>
-       <item row="1" column="0">
-        <property name="text">
-         <string>1001</string>
-        </property>
-       </item>
-       <item row="1" column="1">
-        <property name="text">
-         <string>Mobile</string>
-        </property>
-       </item>
-       <item row="1" column="2">
-        <property name="text">
-         <string>Ramy</string>
-        </property>
-       </item>
-       <item row="1" column="3">
-        <property name="text">
-         <string>1</string>
-        </property>
-       </item>
-      </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_3">
       <property name="geometry">
@@ -675,128 +573,6 @@ QTabBar::tab:!selected:hover
        <attribute name="title">
         <string>Liste</string>
        </attribute>
-       <widget class="QTableWidget" name="tableWidget_3">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>391</width>
-          <height>151</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="showGrid">
-         <bool>false</bool>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-        <property name="cornerButtonEnabled">
-         <bool>true</bool>
-        </property>
-        <property name="rowCount">
-         <number>3</number>
-        </property>
-        <attribute name="horizontalHeaderHighlightSections">
-         <bool>true</bool>
-        </attribute>
-        <attribute name="verticalHeaderVisible">
-         <bool>false</bool>
-        </attribute>
-        <row>
-         <property name="text">
-          <string>01</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>02</string>
-         </property>
-        </row>
-        <row/>
-        <column>
-         <property name="text">
-          <string>ID</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Nom</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Type</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Adresse</string>
-         </property>
-        </column>
-        <item row="0" column="0">
-         <property name="text">
-          <string>1234</string>
-         </property>
-        </item>
-        <item row="0" column="1">
-         <property name="text">
-          <string>Facebook</string>
-         </property>
-        </item>
-        <item row="0" column="2">
-         <property name="text">
-          <string>Site</string>
-         </property>
-        </item>
-        <item row="0" column="3">
-         <property name="text">
-          <string>facebook.com</string>
-         </property>
-        </item>
-        <item row="1" column="0">
-         <property name="text">
-          <string>1235</string>
-         </property>
-        </item>
-        <item row="1" column="1">
-         <property name="text">
-          <string>Steam</string>
-         </property>
-        </item>
-        <item row="1" column="2">
-         <property name="text">
-          <string>Application</string>
-         </property>
-        </item>
-        <item row="1" column="3">
-         <property name="text">
-          <string>steam.com</string>
-         </property>
-        </item>
-        <item row="2" column="0">
-         <property name="text">
-          <string>1236</string>
-         </property>
-        </item>
-        <item row="2" column="1">
-         <property name="text">
-          <string>Instagram</string>
-         </property>
-        </item>
-        <item row="2" column="2">
-         <property name="text">
-          <string>Site</string>
-         </property>
-        </item>
-        <item row="2" column="3">
-         <property name="text">
-          <string>instagram.com</string>
-         </property>
-        </item>
-       </widget>
        <widget class="QLineEdit" name="lineEdit_nomappareil_3">
         <property name="geometry">
          <rect>
@@ -996,6 +772,16 @@ QTabBar::tab:!selected:hover
          <string>bloquer/débloquer</string>
         </property>
        </widget>
+       <widget class="QTableView" name="tablesites">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>10</y>
+          <width>371</width>
+          <height>171</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -1039,7 +825,7 @@ QTabBar::tab:!selected:hover
          </property>
         </widget>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_nomappareil_5">
+       <widget class="QLineEdit" name="idsite">
         <property name="geometry">
          <rect>
           <x>40</x>
@@ -1183,7 +969,7 @@ QTabBar::tab:!selected:hover
          <string>ID :</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_nomappareil_6">
+       <widget class="QLineEdit" name="typesite">
         <property name="geometry">
          <rect>
           <x>40</x>
@@ -1193,7 +979,7 @@ QTabBar::tab:!selected:hover
          </rect>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_nomappareil_7">
+       <widget class="QLineEdit" name="adresssite">
         <property name="geometry">
          <rect>
           <x>300</x>
@@ -1203,7 +989,7 @@ QTabBar::tab:!selected:hover
          </rect>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_nomappareil_8">
+       <widget class="QLineEdit" name="nomsite">
         <property name="geometry">
          <rect>
           <x>300</x>
@@ -1615,7 +1401,7 @@ QTabBar::tab:!selected:hover
          <string>Adresse :</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_11">
+       <widget class="QPushButton" name="ajoutersitebuton">
         <property name="geometry">
          <rect>
           <x>360</x>
@@ -1828,7 +1614,7 @@ QTabBar::tab:!selected:hover
          <string>ID :</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_9">
+       <widget class="QPushButton" name="modifiersite">
         <property name="geometry">
          <rect>
           <x>310</x>
@@ -2018,7 +1804,7 @@ QTabBar::tab:!selected:hover
          <string>ID :</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_nomappareil_10">
+       <widget class="QLineEdit" name="lineEdit_susite">
         <property name="geometry">
          <rect>
           <x>90</x>
@@ -2028,7 +1814,7 @@ QTabBar::tab:!selected:hover
          </rect>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_10">
+       <widget class="QPushButton" name="suppsite">
         <property name="geometry">
          <rect>
           <x>310</x>

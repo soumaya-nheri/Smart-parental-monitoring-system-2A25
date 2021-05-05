@@ -1,7 +1,8 @@
 #ifndef SITES_H
 #define SITES_H
 #include <QString>
-
+#include <QSqlQuery>
+#include <QSqlQueryModel>
 class sites
 {
 
@@ -24,6 +25,8 @@ public:
 
 
     bool ajoutersite();
+    bool supprimersite(int id);
+    QSqlQueryModel * affichersites();
 
 private:
     QString type,name,adress;
