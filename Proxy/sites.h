@@ -28,6 +28,7 @@ public:
     bool supprimersite(int id);
     QSqlQueryModel * affichersites();
     QSqlQueryModel * recherchesite(const QString &id, int filtre);
+    bool modifiersite(int id);
 
 private:
     QString type,name,adress;

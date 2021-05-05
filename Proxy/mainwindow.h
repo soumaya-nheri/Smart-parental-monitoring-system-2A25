@@ -43,6 +43,10 @@ private slots:
 
     void on_radioButton_3_pressed();
 
+    void on_modifiersite_clicked();
+
+    void on_pushButton_3_clicked();
+
 private:
     Ui::MainWindow *ui;
     Appareil tmpapp;

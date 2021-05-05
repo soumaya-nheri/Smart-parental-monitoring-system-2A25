@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
     a.setStyleSheet(styleSheet);
 
     MainWindow w;
-    w.show();
-    if(test) //test cnx
+   w.show();
+   /* if(test) //test cnx
     {w.show();
         QMessageBox::information(nullptr, QObject::tr("database is open"),
                     QObject::tr("connection successful.\n"
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     else
         QMessageBox::critical(nullptr, QObject::tr("database is not open"),
                     QObject::tr("connection failed.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+                                "Click Cancel to exit."), QMessageBox::Cancel);*/
 
     return a.exec();
 }

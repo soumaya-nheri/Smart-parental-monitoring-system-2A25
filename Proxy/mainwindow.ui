@@ -145,7 +145,7 @@ QTabBar::tab:!selected:hover
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_appareil">
      <attribute name="title">
@@ -488,6 +488,19 @@ QTabBar::tab:!selected:hover
         </rect>
        </property>
       </widget>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>190</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>↻</string>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_sites">
@@ -555,7 +568,7 @@ QTabBar::tab:!selected:hover
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1470,12 +1483,12 @@ QTabBar::tab:!selected:hover
          </property>
         </widget>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_nomappareil_9">
+       <widget class="QLineEdit" name="lineEdit_modifiersite">
         <property name="geometry">
          <rect>
-          <x>90</x>
-          <y>110</y>
-          <width>191</width>
+          <x>120</x>
+          <y>90</y>
+          <width>161</width>
           <height>20</height>
          </rect>
         </property>
@@ -1484,7 +1497,7 @@ QTabBar::tab:!selected:hover
         <property name="geometry">
          <rect>
           <x>40</x>
-          <y>110</y>
+          <y>90</y>
           <width>111</width>
           <height>16</height>
          </rect>
@@ -1617,14 +1630,446 @@ QTabBar::tab:!selected:hover
        <widget class="QPushButton" name="modifiersite">
         <property name="geometry">
          <rect>
-          <x>310</x>
-          <y>110</y>
-          <width>211</width>
+          <x>390</x>
+          <y>160</y>
+          <width>131</width>
           <height>23</height>
          </rect>
         </property>
         <property name="text">
          <string>Modifier</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEditnewtype">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>130</y>
+          <width>161</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEditnewname">
+        <property name="geometry">
+         <rect>
+          <x>390</x>
+          <y>90</y>
+          <width>131</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEditnewadr">
+        <property name="geometry">
+         <rect>
+          <x>390</x>
+          <y>130</y>
+          <width>131</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_29">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>130</y>
+          <width>111</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">/*Copyright (c) DevSec Studio. All rights reserved.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+/*-----QWidget-----*/
+QWidget
+{
+	background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:.4 #343434);
+	color: #ffffff;
+	border-color: #000000;
+
+}
+
+
+/*-----QLabel-----*/
+QLabel
+{
+	background-color: transparent;
+	color: #fff;
+	font-size: 8pt;
+	border-color: #ffffff;
+
+}
+
+
+/*-----QToolButton-----*/
+QToolButton
+{
+	background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+	color: #000;
+	font-size: 14pt;
+	border-radius: 4px;
+	padding: 10px;
+
+}
+
+
+QToolButton::pressed
+{
+	background-color: #6b960f;
+
+}
+
+
+/*-----QTabWidget-----*/
+QTabBar::tab
+{
+	font-size: 8pt;
+	font-weight: bold;
+	width: 80px;
+    border: 1px solid #444;
+    border-bottom-style: none;
+	border-top-style: none;
+    background-color: #323232;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    margin-right: -1px;
+
+}
+
+QTabWidget::pane 
+{
+    border: 1px solid qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+    top: 1px;
+
+}
+
+QTabBar::tab:last
+{
+    margin-right: 0; 
+
+}
+
+QTabBar::tab:first:!selected
+{
+	margin-left: 0px; 
+
+}
+
+QTabBar::tab:!selected
+{
+    color: #fff;
+    border-bottom-style: solid;
+    margin-top: 3px;
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:.4 #343434);
+
+}
+
+QTabBar::tab:selected
+{
+	background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+	color: #000;
+    margin-bottom: 0px;
+
+}
+
+QTabBar::tab:!selected:hover
+{
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:0.4 #343434, stop:0.2 #343434, stop:0.1 #ffaa00);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>Nouveau type :</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_30">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>90</y>
+          <width>111</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">/*Copyright (c) DevSec Studio. All rights reserved.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+/*-----QWidget-----*/
+QWidget
+{
+	background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:.4 #343434);
+	color: #ffffff;
+	border-color: #000000;
+
+}
+
+
+/*-----QLabel-----*/
+QLabel
+{
+	background-color: transparent;
+	color: #fff;
+	font-size: 8pt;
+	border-color: #ffffff;
+
+}
+
+
+/*-----QToolButton-----*/
+QToolButton
+{
+	background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+	color: #000;
+	font-size: 14pt;
+	border-radius: 4px;
+	padding: 10px;
+
+}
+
+
+QToolButton::pressed
+{
+	background-color: #6b960f;
+
+}
+
+
+/*-----QTabWidget-----*/
+QTabBar::tab
+{
+	font-size: 8pt;
+	font-weight: bold;
+	width: 80px;
+    border: 1px solid #444;
+    border-bottom-style: none;
+	border-top-style: none;
+    background-color: #323232;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    margin-right: -1px;
+
+}
+
+QTabWidget::pane 
+{
+    border: 1px solid qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+    top: 1px;
+
+}
+
+QTabBar::tab:last
+{
+    margin-right: 0; 
+
+}
+
+QTabBar::tab:first:!selected
+{
+	margin-left: 0px; 
+
+}
+
+QTabBar::tab:!selected
+{
+    color: #fff;
+    border-bottom-style: solid;
+    margin-top: 3px;
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:.4 #343434);
+
+}
+
+QTabBar::tab:selected
+{
+	background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+	color: #000;
+    margin-bottom: 0px;
+
+}
+
+QTabBar::tab:!selected:hover
+{
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:0.4 #343434, stop:0.2 #343434, stop:0.1 #ffaa00);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>Nouveau nom :</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_31">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>130</y>
+          <width>111</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">/*Copyright (c) DevSec Studio. All rights reserved.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+/*-----QWidget-----*/
+QWidget
+{
+	background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:.4 #343434);
+	color: #ffffff;
+	border-color: #000000;
+
+}
+
+
+/*-----QLabel-----*/
+QLabel
+{
+	background-color: transparent;
+	color: #fff;
+	font-size: 8pt;
+	border-color: #ffffff;
+
+}
+
+
+/*-----QToolButton-----*/
+QToolButton
+{
+	background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+	color: #000;
+	font-size: 14pt;
+	border-radius: 4px;
+	padding: 10px;
+
+}
+
+
+QToolButton::pressed
+{
+	background-color: #6b960f;
+
+}
+
+
+/*-----QTabWidget-----*/
+QTabBar::tab
+{
+	font-size: 8pt;
+	font-weight: bold;
+	width: 80px;
+    border: 1px solid #444;
+    border-bottom-style: none;
+	border-top-style: none;
+    background-color: #323232;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    margin-right: -1px;
+
+}
+
+QTabWidget::pane 
+{
+    border: 1px solid qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+    top: 1px;
+
+}
+
+QTabBar::tab:last
+{
+    margin-right: 0; 
+
+}
+
+QTabBar::tab:first:!selected
+{
+	margin-left: 0px; 
+
+}
+
+QTabBar::tab:!selected
+{
+    color: #fff;
+    border-bottom-style: solid;
+    margin-top: 3px;
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:.4 #343434);
+
+}
+
+QTabBar::tab:selected
+{
+	background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+	color: #000;
+    margin-bottom: 0px;
+
+}
+
+QTabBar::tab:!selected:hover
+{
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:0.4 #343434, stop:0.2 #343434, stop:0.1 #ffaa00);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>Nouvelle addresse :</string>
         </property>
        </widget>
       </widget>

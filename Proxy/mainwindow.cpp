@@ -91,6 +91,10 @@ void MainWindow::on_ajoutersitebuton_clicked()
     a= sites(id,name,type,adress);
     bool test=a.ajoutersite();
     if (test) {
+        ui->idsite->clear();
+        ui->typesite->clear() ;
+        ui->nomsite->clear() ;
+        ui->adresssite->clear() ;
         ui->tablesites->setModel(tmpsite.affichersites());
         QMessageBox::information(nullptr, QObject::tr("OK"),QObject::tr("ajout effectué"),QMessageBox::Cancel);
     } else
@@ -107,7 +111,7 @@ void MainWindow::on_suppsite_clicked()
     bool testsupp2 = tmpsite.supprimersite(i);
     if (testsupp2){
         ui->tablesites->setModel(tmpsite.affichersites());
-
+        ui->lineEdit_susite->clear();
         QMessageBox::information(nullptr, QObject::tr("OK"),
                     QObject::tr("Suppression effectuée.\n"
                                 "Click Cancel to exit." ), QMessageBox::Cancel);
@@ -147,4 +151,41 @@ void MainWindow::on_radioButton_3_pressed()
 {
     QString s=ui->lineEdit_recherche->text();
     ui->tablesites->setModel(tmpsite.recherchesite(s,3));
+}
+
+void MainWindow::on_modifiersite_clicked()
+{
+
+
+            int id=ui->lineEdit_modifiersite->text().toInt();
+            QString nom=ui->lineEditnewname->text();
+            QString type=ui->lineEditnewtype->text();
+            QString adresse=ui->lineEditnewadr->text();
+
+
+            sites S(id,nom,type,adresse);
+            bool test = S.modifiersite(id);
+
+            if (test){
+                ui->tablesites->setModel(tmpsite.affichersites());
+
+
+                QMessageBox::information(nullptr,QObject::tr("OK"),
+                                         QObject::tr("Modification effectué\n"
+        "Click Cancel to exit"),QMessageBox::Cancel);
+
+                ui->lineEdit_modifiersite->clear();
+                ui->lineEditnewname->clear();
+                ui->lineEditnewadr->clear();
+                ui->lineEditnewtype->clear();
+
+
+            }
+            else
+                QMessageBox::critical(nullptr,QObject::tr("Not OK"), QObject::tr("Modification non effectué.\n" "Clic Cancel to exit."),QMessageBox::Cancel);
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    ui->table->setModel(tmpapp.afficher());
 }

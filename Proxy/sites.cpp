@@ -81,3 +81,19 @@ QSqlQueryModel * sites::recherchesite(const QString &id, int filtre)
 
     return model;
 }
+
+
+bool sites::modifiersite(int id)
+
+{
+    QSqlQuery query;
+    QString res =   QString::number(id);
+    query.prepare("UPDATE SITES SET TYPE=:type,ADRESS=:adress,NAME=:name,ID=:id   WHERE ID=:id" );
+
+    query.bindValue(":id", res);
+    query.bindValue(":name", name);
+    query.bindValue(":type", type);
+    query.bindValue(":adress", adress);
+
+    return query.exec();
+}

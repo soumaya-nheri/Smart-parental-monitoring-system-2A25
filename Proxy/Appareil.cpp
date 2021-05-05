@@ -78,7 +78,7 @@ model->setHeaderData(3, Qt::Horizontal, QObject::tr("Numero"));
 bool Appareil::modifierApp(int id,QString owner,QString type,int num)
 {
    QSqlQuery query;
-   query.prepare("UPDATE collaborateur SET id= :id,owner= :owner,type=:type,num= :num");
+   query.prepare("UPDATE appareils SET id= :id,owner= :owner,type=:type,NUMERO= :num WHERE ID=:id");
    query.bindValue(":id", id);
    query.bindValue(":owner",owner );
    query.bindValue(":type",type);
