@@ -7,6 +7,7 @@
 #include "modification.h"
 #include "sites.h"
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -90,7 +91,7 @@ void MainWindow::on_ajoutersitebuton_clicked()
     a= sites(id,name,type,adress);
     bool test=a.ajoutersite();
     if (test) {
-        ui->table->setModel(tmpapp.afficher());
+        ui->tablesites->setModel(tmpsite.affichersites());
         QMessageBox::information(nullptr, QObject::tr("OK"),QObject::tr("ajout effectué"),QMessageBox::Cancel);
     } else
     {
@@ -105,6 +106,7 @@ void MainWindow::on_suppsite_clicked()
     int i=ui->lineEdit_susite->text().toInt();
     bool testsupp2 = tmpsite.supprimersite(i);
     if (testsupp2){
+        ui->tablesites->setModel(tmpsite.affichersites());
 
         QMessageBox::information(nullptr, QObject::tr("OK"),
                     QObject::tr("Suppression effectuée.\n"
@@ -115,4 +117,34 @@ void MainWindow::on_suppsite_clicked()
         QMessageBox::critical(nullptr, QObject::tr("Not OK"),
                     QObject::tr("Suppréssion non effectuée.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_lineEdit_recherche_textChanged(const QString &arg1)
+{
+    int filtre=1;
+    if (ui->radioButton->isChecked())
+        filtre=1;
+    else if (ui->radioButton_2->isChecked())
+        filtre=2;
+    else if (ui->radioButton_3->isChecked())
+        filtre=3;
+    ui->tablesites->setModel(tmpsite.recherchesite(arg1,filtre));
+}
+
+void MainWindow::on_radioButton_2_pressed()
+{
+    QString s=ui->lineEdit_recherche->text();
+    ui->tablesites->setModel(tmpsite.recherchesite(s,2));
+}
+
+void MainWindow::on_radioButton_pressed()
+{
+    QString s=ui->lineEdit_recherche->text();
+    ui->tablesites->setModel(tmpsite.recherchesite(s,1));
+}
+
+void MainWindow::on_radioButton_3_pressed()
+{
+    QString s=ui->lineEdit_recherche->text();
+    ui->tablesites->setModel(tmpsite.recherchesite(s,3));
 }

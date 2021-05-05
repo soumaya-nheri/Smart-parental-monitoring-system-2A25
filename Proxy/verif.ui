@@ -172,7 +172,7 @@ QTabBar::tab:!selected:hover
      </rect>
     </property>
     <property name="text">
-     <string>Vérification en cours...</string>
+     <string>Veuillez taper un site </string>
     </property>
    </widget>
   </widget>

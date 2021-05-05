@@ -573,7 +573,7 @@ QTabBar::tab:!selected:hover
        <attribute name="title">
         <string>Liste</string>
        </attribute>
-       <widget class="QLineEdit" name="lineEdit_nomappareil_3">
+       <widget class="QLineEdit" name="lineEdit_recherche">
         <property name="geometry">
          <rect>
           <x>420</x>

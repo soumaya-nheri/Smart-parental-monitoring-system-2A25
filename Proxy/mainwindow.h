@@ -35,10 +35,19 @@ private slots:
 
     void on_suppsite_clicked();
 
+    void on_lineEdit_recherche_textChanged(const QString &arg1);
+
+    void on_radioButton_2_pressed();
+
+    void on_radioButton_pressed();
+
+    void on_radioButton_3_pressed();
+
 private:
     Ui::MainWindow *ui;
     Appareil tmpapp;
     sites tmpsite;
+  //  int filtre=1;
 
 
 };

@@ -61,3 +61,23 @@ model->setHeaderData(3, Qt::Horizontal, QObject::tr("Adresse"));
 
     return model;
 }
+
+QSqlQueryModel * sites::recherchesite(const QString &id, int filtre)
+{
+    QString site = "site";
+    QString app = "app";
+    QSqlQueryModel * model = new QSqlQueryModel();
+    if (filtre==1)
+        model->setQuery("select * from SITES where(NAME LIKE '"+id+"%') or (ID LIKE'"+id+"%') or (ADRESS LIKE '"+id+"%')");
+    else if (filtre==2)
+        model->setQuery("select * from SITES where((NAME LIKE '"+id+"%') or (ID LIKE'"+id+"%') or (ADRESS LIKE '"+id+"%')) and (TYPE LIKE '"+site+"%')");
+    else if (filtre==3)
+        model->setQuery("select * from SITES where((NAME LIKE '"+id+"%') or (ID LIKE'"+id+"%') or (ADRESS LIKE '"+id+"%')) and (TYPE LIKE '"+app+"%')");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Type"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Adresse"));
+
+
+    return model;
+}

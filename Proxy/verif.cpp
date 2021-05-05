@@ -13,16 +13,16 @@ verif::verif(QWidget *parent) :
     ui(new Ui::verif)
 {
     ui->setupUi(this);
-    int ret=tmp.connect_arduino();
-    /*switch(ret){
+    /*int ret=tmp.connect_arduino();
+    switch(ret){
     case(0):qDebug() << "arduino is available and connected to : " << tmp.getarduino_port_name();
         break;
     case(1):qDebug() << "arduino is available but not connected to : " << tmp.getarduino_port_name();
         break;
     case(-1):qDebug() << "arduino is not available";
         break;
-    }*/
-    QObject::connect(tmp.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
+    }
+    QObject::connect(tmp.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));*/
 
 }
 
@@ -36,6 +36,8 @@ void verif::update_label(){
     data=tmp.read_from_arduino();
     if (data=="1")
         ui->label_verif->setText("Site accédé!!!");
+    else if (data=="2")
+        ui->label_verif->setText("Site non accédé.");
     else if (data=="0")
         ui->label_verif->setText("Site non accédé.");
 
